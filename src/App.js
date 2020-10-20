@@ -10,6 +10,7 @@ import tasks from './Sample/tasks.json';  // importar archivo de carpeta Sample/
 import Tasks from './components/Tasks'; 
 import TaskForm from './components/TaskForm'; 
 import Post from './components/Post'
+import {BrowserRouter as Router ,Route } from 'react-router-dom';
 
 
 class App extends Component {
@@ -51,12 +52,21 @@ class App extends Component {
   render()  {
     
     return <div> 
-      <TaskForm addTask ={this.addTask}/>
-      <Tasks tasks={this.state.tasks}
-       deleteTask ={this.deleteTask}
-       checkDone = {this.checkDone}
-       />  
-      <Post/>       
+      <Router>
+       <Route exact path = "/" render={()=>{
+        return<div>
+          <TaskForm addTask ={this.addTask}/>
+              <Tasks tasks={this.state.tasks}
+                deleteTask ={this.deleteTask}
+                checkDone = {this.checkDone}
+              /> 
+        </div>
+         }}>
+       </Route>
+       <Route path ="/posts" component={Posts}/>
+      </Router>
+      
+            
     </div>
   }
 }
