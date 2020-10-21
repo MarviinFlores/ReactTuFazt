@@ -10,7 +10,7 @@ import tasks from './Sample/tasks.json';  // importar archivo de carpeta Sample/
 import Tasks from './components/Tasks'; 
 import TaskForm from './components/TaskForm'; 
 import Post from './components/Post'
-import {BrowserRouter as Router ,Route } from 'react-router-dom';
+import {BrowserRouter as Router ,Route,Link} from 'react-router-dom';
 
 
 class App extends Component {
@@ -53,6 +53,9 @@ class App extends Component {
     
     return <div> 
       <Router>
+        <Link to ="/">Home</Link>
+        <br/>
+        <Link to ="/posts">Post</Link>
        <Route exact path = "/" render={()=>{
         return<div>
           <TaskForm addTask ={this.addTask}/>
@@ -63,7 +66,7 @@ class App extends Component {
         </div>
          }}>
        </Route>
-       <Route path ="/posts" component={Posts}/>
+       <Route path ="/posts" component={Post}/>
       </Router>
       
             
